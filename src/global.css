@@ -1,0 +1,30 @@
+body{
+    background-color: #000020;
+    color: #ddddff;
+    font-weight: bold;
+    margin: 0;
+    padding: 1px;
+}
+
+input{
+    border: none;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0px auto;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
