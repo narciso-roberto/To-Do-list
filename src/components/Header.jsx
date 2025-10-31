@@ -4,7 +4,7 @@ function Header() {
   
   return (
     <>
-      <div className={`${style.title} + container`}>To-Do List</div>
+      <div className={`${style.title}`}>To-Do List</div>
     </>
   )
 }

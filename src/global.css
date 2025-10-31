@@ -6,13 +6,20 @@ body{
     padding: 1px;
 }
 
+h1,h2,h3,ul,li,p,a{
+    margin: 0;
+}
+
 input{
     border: none;
 }
 
 .container{
-    max-width: 1200px;
+    max-width: 1050px;
     margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 *{

@@ -1,13 +1,18 @@
 import Header from './components/Header'
 import Forms from './components/Forms'
+import Tasks from './components/Tasks'
 
 function App() {
   
 
   return (
     <>
-      <Header/>
-      <Forms/>
+      <div className='container'>
+        <Header/>
+        <Forms/>
+        <Tasks/>
+      </div>    
+      
 
     </>
   )
