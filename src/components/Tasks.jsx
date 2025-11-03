@@ -1,52 +1,81 @@
 import React from "react";
 import style from "./Tasks.module.css";
-import Title from '../components/Title'
+import Title from "../components/Title";
+import Task from "./Task";
 
 const Tasks = () => {
+  const API = [
+    {
+      title: "Estudar React",
+      descTask:
+        "Aprender sobre hooks e gerenciamento de estado com useState e useEffect.",
+      done: false,
+    },
+    {
+      title: "Revisar JavaScript",
+      descTask: "Revisar conceitos de promises, async/await e closures.",
+      done: true,
+    },
+    {
+      title: "Criar projeto pessoal",
+      descTask:
+        "Iniciar um pequeno projeto para praticar React e integração com API.",
+      done: false,
+    },
+  ];
+
+  const [tasks, setTask] = React.useState(API);
+
+  function teste(identificador, valor) {
+    const newTasks = tasks.map((task) => {
+      if (task.title == identificador) {
+        return {
+          ...task,
+          done: !valor,
+        };
+      }
+
+      return task;
+    });
+
+    setTask(newTasks);
+  }
+
 
   return (
     <div className={style.tasksSection}>
+      <Title text={"To Do"} />
 
-      <Title text={"To Do"}/>
+      {tasks.map((objTask, index) => {
+        if (!objTask.done) {
+          return (
+            <Task
+              key={index}
+              id={index}
+              title={objTask.title}
+              done={false}
+              descTask={objTask.descTask}
+              toggle={teste}
+            />
+          );
+        }
+      })}
 
-      <div className={style.task}>
+      <Title text={"Done"} />
 
-        <div className={style.checkbox}>
-          <input name="done" type="checkbox"/>
-        </div>
-
-        <div className={style.infos}>
-          <h1>Titulo</h1>
-
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-            animi cumque nam eum consectetur obcaecati autem aspernatur nihil
-            neque quae! Maiores consequuntur placeat temporibus repellendus
-            velit reiciendis similique, officiis maxime.
-          </p>
-        </div>
-      </div>
-
-      <Title text={"Done"}/>
-
-      <div className={style.task}>
-
-        <div className={style.checkbox}>
-          <input name="done" type="checkbox"/>
-        </div>
-
-        <div className={style.infos}>
-          <h1>Titulo</h1>
-
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-            animi cumque nam eum consectetur obcaecati autem aspernatur nihil
-            neque quae! Maiores consequuntur placeat temporibus repellendus
-            velit reiciendis similique, officiis maxime.
-          </p>
-        </div>
-      </div>
-
+      {tasks.map((objTask, index) => {
+        if (objTask.done) {
+          return (
+            <Task
+              key={index}
+              title={objTask.title}
+              done={true}
+              descTask={objTask.descTask}
+              toggle={teste}
+            />
+          );
+        }
+      })}
     </div>
   );
 };
