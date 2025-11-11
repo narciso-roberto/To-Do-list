@@ -1,8 +1,9 @@
 import React from "react";
 import style from "./Formes.module.css";
+import axios from 'axios';
 
 const Forms = () => {
-  const [inputJson, setInputJson] = React.useState({ title: "", descTask: "" });
+  const [inputJson, setInputJson] = React.useState({ title: "", taskDesc: "", done: false });
 
   // Ele não re-renderiza o componente a cada digitação, pois usa refs para rastrear os campos.
   // Como eu poderia usar os REFS para melhorar a performace
@@ -12,8 +13,16 @@ const Forms = () => {
   }
 
   function anySubmit(event) {
-    event.preventDefault();
-    console.log(inputJson);
+      event.preventDefault();
+
+      axios.post('http://127.0.0.1:8000/createTasks',inputJson)
+      .then(function (response) {
+        window.location.reload()
+      })
+      .catch(function (error) {
+        console.log(error);
+    });
+
   }
 
   return (
@@ -26,8 +35,8 @@ const Forms = () => {
           onChange={anyChange}
         />
         <textarea
-          name="descTask"
-          value={inputJson.descTask}
+          name="taskDesc"
+          value={inputJson.taskDesc}
           onChange={anyChange}
         ></textarea>
         <button>Enviar</button>

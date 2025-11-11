@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Task.module.css";
 
-const Task = ({ title, descTask, done, toggle, id }) => {
+const Task = ({ title, taskDesc, done, toggle, id }) => {
 
   function handleCheck({ target }) {
     toggle(title, !target.checked);
@@ -21,7 +21,7 @@ const Task = ({ title, descTask, done, toggle, id }) => {
       <div className={style.infos}>
         <h1>{title}</h1>
 
-        <p>{descTask}</p>
+        <p>{taskDesc}</p>
       </div>
     </div>
   );
